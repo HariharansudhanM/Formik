@@ -13,7 +13,7 @@ function BookDisplay() {
     setBooks(() => [...books, ...data]);
   }
   useEffect(() => {
-    if (!(books.length > 0)) {
+    if (!(books.length >= 1)) {
       getBooks();
     }
   }, []);
