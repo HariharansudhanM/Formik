@@ -13,7 +13,9 @@ function BookDisplay() {
     setBooks(() => [...books, ...data]);
   }
   useEffect(() => {
-    getBooks();
+    if (!(books.length > 0)) {
+      getBooks();
+    }
   }, []);
   return (
     <>
