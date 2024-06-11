@@ -28,16 +28,22 @@ function CreateBook() {
     getOptions();
   }, []);
 
-  const { values, handleSubmit, handleChange } = useFormik({
+  const { touched, errors, values, handleSubmit, handleChange } = useFormik({
     initialValues: {
       title: "",
-      author: "",
+      author: "Hari",
       ISBN_Number: "",
       publication_date: "",
     },
     validate(values) {
       if (values.title == "") {
         return { title: "Title is required" };
+      }
+      if (values.ISBN_Number == "") {
+        return { ISBN_Number: "ISBN_Number is required" };
+      }
+      if (values.publication_date == "") {
+        return { publication_date: "Title is required" };
       }
     },
     onSubmit(values) {
@@ -62,6 +68,9 @@ function CreateBook() {
           value={values.title}
           onChange={handleChange}
         />
+        {touched.title && errors.title ? (
+          <div style={{ color: "red" }}>{errors.title}</div>
+        ) : null}
       </Form.Group>
 
       <Form.Group>
@@ -86,6 +95,9 @@ function CreateBook() {
           value={values.ISBN_Number}
           onChange={handleChange}
         />
+        {touched.ISBN_Number && errors.ISBN_Number ? (
+          <div style={{ color: "red" }}>{errors.ISBN_Number}</div>
+        ) : null}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -96,6 +108,9 @@ function CreateBook() {
           value={values.publication_date}
           onChange={handleChange}
         />
+        {touched.publication_date && errors.publication_date ? (
+          <div style={{ color: "red" }}>{errors.publication_date}</div>
+        ) : null}
       </Form.Group>
 
       <button className="btn btn-success" type="submit">

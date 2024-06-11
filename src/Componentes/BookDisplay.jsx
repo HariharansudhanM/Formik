@@ -26,17 +26,19 @@ function BookDisplay() {
             <th scope="col">Author</th>
             <th scope="col">ISBN Number</th>
             <th scope="col">Publication date</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
           {books?.map((el, index) => {
             return (
               <TableRows
-                key={el.ISBN_Number}
+                key={el.id}
                 title={el.title}
                 author={el.author}
                 ISBN_Number={el.ISBN_Number}
                 publication_date={el.publication_date}
+                id={el.id}
               />
             );
           })}
